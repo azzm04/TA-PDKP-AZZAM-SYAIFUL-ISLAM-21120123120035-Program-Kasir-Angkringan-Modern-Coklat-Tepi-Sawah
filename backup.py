@@ -9,8 +9,7 @@ class UserService:          # Memakai Modul 5 Class UserService berfungsi untuk 
         self.data = {
             "azzam": {
                 "username": "azzam",
-                "password": "123",
-                "role": "Customer"
+                "password": "123"
             }
         }
 
@@ -24,7 +23,7 @@ class UserService:          # Memakai Modul 5 Class UserService berfungsi untuk 
     def login(self):
         get_data = self.checkCredentials()
         if get_data:
-            print("\Selamat Datang di Coklat Tepi Sawah ", get_data['role'])
+            print("\Selamat Datang di Coklat Tepi Sawah ")
             print("Logged in as user username: ", get_data['username'])
             return True
         else:
@@ -37,11 +36,11 @@ app.title('Program Kasir Angkringan Modern Coklat Tepi Sawah By Azzam Syaiful Is
 app.resizable(False, False)  # Mencegah perubahan ukuran window
 
 def set_background_image(frame, image_path):
-    # Memuat gambar background
+    
     image = Image.open(image_path)
     photo = ImageTk.PhotoImage(image)
     
-    # Mengatur background dengan label
+    
     background_label = Label(frame, image=photo)
     background_label.image = photo  # Menyimpan referensi ke photo untuk mencegah garbage collection
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
@@ -98,25 +97,22 @@ def window_Kasir():
         def kembalian():
             global total
             uang_str = teksuang.get()
-            # Cek apakah input teks tidak kosong dan perhitungan untuk Uang kembalian
-            if uang_str: # Mencakup Modul 2 Pengkondisian yang disini menggunakan IF Else
+            
+            if uang_str:
                 try:
                     uang = int(uang_str)
-                    if uang >= total:
-                        kembalian = uang - total
-                        details = {
-                            "Steak Ayam": Steakayam.get(),
-                            "Cireng": Cireng.get(),
-                            "Kentang": Kentang.get(),
-                            "Chicken Toast": ChickenToast.get(),
-                            "Bakso Aci": BaksoAci.get(),
-                            "Coklat Roti": Coklatroti.get(),
-                            "Kopi Susu Gula Aren": Kopisusugulaaren.get(),
-                            "Teh Leci": Tehleci.get()
-                        }
-                        window_Struk(uang, total, details)
-                    else:   
-                        messagebox.showerror(message='Maaf, uang kamu kurang')
+                    kembalian = uang - total
+                    details = {
+                        "Steak Ayam": Steakayam.get(),
+                        "Cireng": Cireng.get(),
+                        "Kentang": Kentang.get(),
+                        "Chicken Toast": ChickenToast.get(),
+                        "Bakso Aci": BaksoAci.get(),
+                        "Coklat Roti": Coklatroti.get(),
+                        "Kopi Susu Gula Aren": Kopisusugulaaren.get(),
+                        "Teh Leci": Tehleci.get()
+                    }
+                    window_Struk(uang, total, details)
                 except ValueError:
                     messagebox.showerror(message='Masukkan jumlah uang yang valid')
             else:
@@ -133,36 +129,34 @@ def window_Kasir():
                 Tehleci.set('0')
 
         def set_background_image(frame, image_path):
-            # Memuat gambar background 
+ 
             image = Image.open(image_path)
             photo = ImageTk.PhotoImage(image)
             
             # Mengatur background dengan label
             background_label = Label(frame, image=photo)
-            background_label.photo = photo  # Menyimpan photo
+            background_label.photo = photo  
             background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 
-        app.geometry('910x600') # membuat ukuran
+        app.geometry('910x600') 
         app.resizable(False, False)  # agar tidak ada perubahan ukuran window secara manual
 
         image_path = "inipo.jpeg"
         set_background_image(app, image_path)
 
-        # Membuat properti tulisan title dengan latar belakang transparan
         Label(app, text="Program Kasir Angkringan Modern Coklat Tepi Sawah:", font='Times 16 bold').place(x=200,y=30)
-
+        
         # membuat label nama menu
         Label(app, text="1. Steakayam:", font='Times 12 bold').place(x=100,y=100)
         Label(app, text="2. Cireng:", font='Times 12 bold').place(x=100,y=140)
         Label(app, text="3. Kentang:", font='Times 12 bold').place(x=100,y=180)
         Label(app, text="4. Chicken Toast:", font='Times 12 bold').place(x=100,y=220)
-        Label(app, text="5. Basko Aci:", font='Times 12 bold').place(x=100,y=260)
+        Label(app, text="5. Bakso Aci:", font='Times 12 bold').place(x=100,y=260)
         Label(app, text="6. Coklat Roti:", font='Times 12 bold').place(x=100,y=300)
         Label(app, text="7. Kopi Susu Gula Aren:", font='Times 12 bold').place(x=100,y=340)
         Label(app, text="8. Teh Leci:", font='Times 12 bold').place(x=100,y=380)
 
-        # membuat label harga
         Label(app, text='Rp. 16000', font='Times 12 bold').place(x=350,y=100)
         Label(app, text='Rp. 8000', font='Times 12 bold').place(x=350,y=140)
         Label(app, text='Rp. 10000', font='Times 12 bold').place(x=350,y=180)
@@ -182,34 +176,29 @@ def window_Kasir():
         Spinbox(app, from_=0, to=100, width=4, font='Times 10', textvariable=Kopisusugulaaren, command=totalbeli).place(x=550,y=340)
         Spinbox(app, from_=0, to=100, width=4, font='Times 10', textvariable=Tehleci, command=totalbeli).place(x=550,y=380)
 
-        # membuat label pembayaran
         Label(app, text='Masukan uang anda', font='Times 12 ').place(x=100,y=440)
 
-        # membuat entry jumlah uang
         Entry(app, textvariable=teksuang).place(x=100,y=460)
 
-        # membuat label total
         Label(app, text='Rp. ', font='Times 12 bold').place(x=350,y=460)
         Label(app, textvariable=UangUser, font='Times 12 bold').place(x=380,y=460)
 
-        # membuat tombol
         Button(app, text='Total', foreground='white', bg='#36ae7c', width=10, command=kembalian).place(x=100,y=560)
         Button(app, text='Clear', foreground='white', bg='#ff1e1e', width=10, command=clear).place(x=250,y=560)
 
-        # footer text
         Label(app, text='Created by Azzam Syaful Islam', font='Times 10 ').place(x=700,y=580)
 
-        app.mainloop() # agar dapat menampilkan window_Kasir
+        app.mainloop() 
 
 def get_current_time():
     return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 def window_Struk(uang, total, details):
     kembalian = uang - total
-    # Membuat window baru
+
     window_Struk = Toplevel()
     window_Struk.title("Struk Pembelian")
-    window_Struk.geometry("600x400")  # mengatur ukuran window Struk yang lebih besar untuk menampung informasi tambahan
+    window_Struk.geometry("600x400")
     window_Struk.resizable(False, False)  # Mencegah perubahan ukuran window Struk
 
     # Membuat teks struk dengan detail pembelian
@@ -228,7 +217,6 @@ def window_Struk(uang, total, details):
         if int(qty) > 0:
             struk_text += f"{item}: {qty} pcs\n"
     
-    # Menambahkan total, tunai, dan kembalian
     struk_text += (
         "-------------------------------------------------------------------\n"
         f"Total : Rp {total}\n"
@@ -239,16 +227,12 @@ def window_Struk(uang, total, details):
         "-------------------------------------------------------------------\n"
     )
 
-    # Menampilkan teks di window Struck
     label = Label(window_Struk, text=struk_text, justify='left', font=("Times", 12))
     label.pack(padx=0, pady=0) 
 
-    # Menambahkan tombol exit yang berfungsi menutup program sekaligus
-    exit_button = Button(window_Struk, text="Exit", command=app.destroy) 
-    exit_button.pack() 
+    window_Struk.mainloop()
 
-# Membuat Tombol login dan Exit
-login_button = Button(app, text="Login", command=window_Kasir)  # Menambahkan command untuk menjalankan fungsi window_Kasir ketika User berhasil Login
+login_button = Button(app, text="Login", command=window_Kasir)  
 login_button.place(x=190, y=170)
 
 exit_button = Button(app, text="Exit", command=app.destroy)
