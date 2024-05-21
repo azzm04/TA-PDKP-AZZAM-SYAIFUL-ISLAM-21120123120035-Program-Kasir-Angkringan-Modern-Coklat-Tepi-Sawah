@@ -46,7 +46,7 @@ def set_background_image(frame, image_path):
     background_label.image = photo  # Menyimpan referensi ke photo untuk mencegah garbage collection
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-image_path = r"C:\Users\HP\Documents\Kuliah\SEMESTER 2\Praktikum\DKP\Source code\TUGAS AKHIR KASIR\inipo.jpeg"
+image_path = "inipo.jpeg"
 set_background_image(app, image_path)
 
 # membuat label dan text fields untuk username dan password
@@ -122,8 +122,6 @@ def window_Kasir():
             else:
                 messagebox.showerror(message='Masukkan jumlah uang yang valid')
 
-
-
         def clear():
                 Steakayam.set('0')
                 Cireng.set('0')
@@ -148,7 +146,7 @@ def window_Kasir():
         app.geometry('910x600') # membuat ukuran
         app.resizable(False, False)  # agar tidak ada perubahan ukuran window secara manual
 
-        image_path = r"C:\Users\HP\Documents\Kuliah\SEMESTER 2\Praktikum\DKP\Source code\TUGAS AKHIR KASIR\inipo.jpeg"
+        image_path = "inipo.jpeg"
         set_background_image(app, image_path)
 
         # Membuat properti tulisan title dengan latar belakang transparan
