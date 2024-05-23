@@ -32,7 +32,7 @@ class UserService:          # Memakai Modul 5 Class UserService berfungsi untuk 
     
 app = Tk()
 app.geometry('450x300')
-app.title('Program Kasir Angkringan Modern Coklat Tepi Sawah By Azzam Syaiful Islam')
+app.title('Login Page by Azzam Syaiful Islam')
 app.resizable(False, False)  # Mencegah perubahan ukuran window
 
 def set_background_image(frame, image_path):
@@ -42,7 +42,7 @@ def set_background_image(frame, image_path):
     
     
     background_label = Label(frame, image=photo)
-    background_label.image = photo  # Menyimpan referensi ke photo untuk mencegah garbage collection
+    background_label.image = photo  
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 image_path = "inipo.jpeg"
@@ -62,12 +62,12 @@ password_entry = Entry(app, show="*")
 password_entry.place(x=190, y=130)
 
 def window_Kasir():
-    username = username_entry.get()            # Memakai Modul 6 Getter OOP yang mengambil nilai dari objek StringVar
+    username = username_entry.get()            # Memakai Modul 6 OOP Getter  yang mengambil nilai dari self.data
     password = password_entry.get()
     user = UserService(username, password)
     if user.login():
 
-        # variabel Mencakup Modul 1 Variabel Tipe data Array
+        # variabel Mencakup Modul 1 Variabel Tipe data menggunakan String
         BaksoAci = StringVar()
         Cireng = StringVar()
         Kentang = StringVar()
@@ -140,6 +140,7 @@ def window_Kasir():
 
 
         app.geometry('910x600') 
+        app.title('Kasir Angkringan Modern by Azzam Syaiful Islam')
         app.resizable(False, False)  # agar tidak ada perubahan ukuran window secara manual
 
         image_path = "inipo.jpeg"
