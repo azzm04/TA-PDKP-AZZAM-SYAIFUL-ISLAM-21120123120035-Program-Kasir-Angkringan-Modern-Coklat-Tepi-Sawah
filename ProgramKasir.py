@@ -186,6 +186,7 @@ def window_Kasir():
 
         Button(app, text='Total', foreground='white', bg='#36ae7c', width=10, command=kembalian).place(x=100,y=560)
         Button(app, text='Clear', foreground='white', bg='#ff1e1e', width=10, command=clear).place(x=250,y=560)
+        Button(app, text='Exit', foreground='white', bg='#ff1e1e', width=10, command=app.destroy).place(x=400,y=560)
 
         Label(app, text='Created by Azzam Syaful Islam', font='Times 10 ').place(x=700,y=580)
 
