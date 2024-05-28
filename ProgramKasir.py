@@ -80,7 +80,6 @@ def window_Kasir():
         teksuang = StringVar ()
         total = 0
 
-        # beberapa function seperti di bawah ini, Mencakup Modul 4 Function and Method
         def totalbeli():
             global total
             hSteakayam = int(Steakayam.get()) * 16000
@@ -101,18 +100,21 @@ def window_Kasir():
             if uang_str:
                 try:
                     uang = int(uang_str)
-                    kembalian = uang - total
-                    details = {
-                        "Steak Ayam": Steakayam.get(),
-                        "Cireng": Cireng.get(),
-                        "Kentang": Kentang.get(),
-                        "Chicken Toast": ChickenToast.get(),
-                        "Bakso Aci": BaksoAci.get(),
-                        "Coklat Roti": Coklatroti.get(),
-                        "Kopi Susu Gula Aren": Kopisusugulaaren.get(),
-                        "Teh Leci": Tehleci.get()
-                    }
-                    window_Struk(uang, total, details)
+                    if uang >= total:
+                        kembalian = uang - total
+                        details = {
+                            "Steak Ayam": Steakayam.get(),
+                            "Cireng": Cireng.get(),
+                            "Kentang": Kentang.get(),
+                            "Chicken Toast": ChickenToast.get(),
+                            "Bakso Aci": BaksoAci.get(),
+                            "Coklat Roti": Coklatroti.get(),
+                            "Kopi Susu Gula Aren": Kopisusugulaaren.get(),
+                            "Teh Leci": Tehleci.get()
+                        }
+                        window_Struk(uang, total, details)
+                    else:
+                        messagebox.showerror(message='Uang anda kurang')
                 except ValueError:
                     messagebox.showerror(message='Masukkan jumlah uang yang valid')
             else:
@@ -127,6 +129,8 @@ def window_Kasir():
                 Coklatroti.set('0')
                 Kopisusugulaaren.set('0')
                 Tehleci.set('0')
+                teksuang.set('0')
+                UangUser.set('0')
 
         def set_background_image(frame, image_path):
  
@@ -187,6 +191,7 @@ def window_Kasir():
         Button(app, text='Total', foreground='white', bg='#36ae7c', width=10, command=kembalian).place(x=100,y=560)
         Button(app, text='Clear', foreground='white', bg='#ff1e1e', width=10, command=clear).place(x=250,y=560)
         Button(app, text='Exit', foreground='white', bg='#ff1e1e', width=10, command=app.destroy).place(x=400,y=560)
+        
 
         Label(app, text='Created by Azzam Syaful Islam', font='Times 10 ').place(x=700,y=580)
 
@@ -231,6 +236,9 @@ def window_Struk(uang, total, details):
 
     label = Label(window_Struk, text=struk_text, justify='left', font=("Times", 12))
     label.pack(padx=0, pady=0) 
+
+    kembali_button = Button(window_Struk, text="Kembali", command=window_Struk.destroy)
+    kembali_button.pack()
 
     window_Struk.mainloop()
 
